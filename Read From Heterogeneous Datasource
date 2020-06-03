@@ -5,7 +5,9 @@ spark=SparkSession.builder.appName("Sfpd").getOrCreate()
 #Reading from CSV
 read_csv_df=spark.read.format("csv")\
     .option("header","false")\
-    .load("K:\BigData\DataSource\sfpd.csv")
+    .load("K:\BigData\DataSource\sfpd.csv
+
+#Imposing Schema to the dataset-
 dataset_df=read_csv_df.toDF(*['id','criminalact','theft','day','Dateoftheft','timeoftheft','place','action','address','latitude','longitude','random'])
 criminalset = dataset_df.createOrReplaceTempView("CRIMINAL_RECORDS")
 spark.sql("SELECT * FROM CRIMINAL_RECORDS").show()
